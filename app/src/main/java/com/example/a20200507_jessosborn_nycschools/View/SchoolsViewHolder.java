@@ -7,8 +7,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.a20200507_jessosborn_nycschools.Model.SchoolSATData;
 import com.example.a20200507_jessosborn_nycschools.R;
+import com.example.a20200507_jessosborn_nycschools.ViewModel.SchoolSATData;
 
 public class SchoolsViewHolder extends RecyclerView.ViewHolder {
 

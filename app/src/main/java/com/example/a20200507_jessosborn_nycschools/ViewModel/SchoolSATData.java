@@ -1,4 +1,4 @@
-package com.example.a20200507_jessosborn_nycschools.Model;
+package com.example.a20200507_jessosborn_nycschools.ViewModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

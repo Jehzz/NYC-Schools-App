@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.a20200507_jessosborn_nycschools.Model.Network;
-import com.example.a20200507_jessosborn_nycschools.Model.SchoolSATData;
 
 import java.util.List;
 

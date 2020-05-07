@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.a20200507_jessosborn_nycschools.Model.SchoolSATData;
 import com.example.a20200507_jessosborn_nycschools.R;
+import com.example.a20200507_jessosborn_nycschools.ViewModel.SchoolSATData;
 
 public class DetailviewFragment extends Fragment {
 

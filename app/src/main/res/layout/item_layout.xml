@@ -4,7 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF">
+    android:layout_margin="3dp"
+    android:background="#CACACA"
+    android:paddingStart="3dp"
+    android:paddingLeft="3dp"
+    android:paddingTop="3dp"
+    android:paddingEnd="3dp"
+    android:paddingRight="3dp"
+    android:paddingBottom="3dp">
 
     <TextView
         android:id="@+id/tv_school_name"
