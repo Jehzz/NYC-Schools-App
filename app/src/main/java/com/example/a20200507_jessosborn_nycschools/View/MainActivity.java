@@ -19,9 +19,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Get viewmodel instance
-        model = ViewModelProviders.of(this).get(SchoolViewModel.class);
-        //Observe Viewmodel
-        //Update UI's ListView/Recyclerview
+        model = new ViewModelProvider(this).get(SchoolViewModel.class);
 
+        //Observe Viewmodel
+        model.getListOfSchools().observe(this, listOfSchools -> {
+            //Update UI's ListView/Recyclerview
+        });
     }
 }
