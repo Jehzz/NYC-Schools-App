@@ -1,6 +1,8 @@
 package com.example.a20200507_jessosborn_nycschools.ViewModel;
 
 import android.util.Log;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -14,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SchoolViewModel extends ViewModel {
+public class SchoolViewModel extends ViewModel implements Filterable {
 
     public String TAG = "SchoolViewModel";
     private String baseUrl = "https://data.cityofnewyork.us/resource/";
@@ -44,5 +46,12 @@ public class SchoolViewModel extends ViewModel {
                         Log.d(TAG, "onFailure: ");
                     }
                 });
+    }
+
+    @Override
+    public Filter getFilter() {
+        //TODO: Implement Filter object, performFiltering(), and publishResults()
+        //I can do this in Kotlin, unsure of how to 'return object : Filter(){... in Java
+        return null;
     }
 }

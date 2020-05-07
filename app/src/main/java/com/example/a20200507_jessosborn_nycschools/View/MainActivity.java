@@ -2,6 +2,7 @@ package com.example.a20200507_jessosborn_nycschools.View;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -22,17 +23,19 @@ public class MainActivity extends AppCompatActivity implements ShowAllDataInterf
     RecyclerView recyclerView;
     SchoolsListAdapter schoolAdapter;
     SchoolViewModel model;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        searchView = findViewById(R.id.searchView);
+        recyclerView = findViewById(R.id.rv_schools_list);
+
         //Recyclerview and other boilerplate setup
         schoolAdapter = new SchoolsListAdapter();
         schoolAdapter.setListener(this);
-
-        recyclerView = findViewById(R.id.rv_schools_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(schoolAdapter);
 
@@ -46,8 +49,24 @@ public class MainActivity extends AppCompatActivity implements ShowAllDataInterf
         model.getListOfSchools().observe(this, listOfSchools -> {
             //Update UI's Recyclerview
             schoolAdapter.setDataSet(listOfSchools);
+            setSearchListener();
         });
 
+    }
+
+    private void setSearchListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //apply filter
+                return false;
+            }
+        });
     }
 
     @Override
