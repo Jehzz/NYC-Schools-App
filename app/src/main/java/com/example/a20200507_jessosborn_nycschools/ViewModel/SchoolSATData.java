@@ -28,48 +28,25 @@ public class SchoolSATData {
         return dbn;
     }
 
-    public void setDbn(String dbn) {
-        this.dbn = dbn;
-    }
-
     public String getSchoolName() {
         return schoolName;
-    }
-
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
     }
 
     public String getNumOfSatTestTakers() {
         return numOfSatTestTakers;
     }
 
-    public void setNumOfSatTestTakers(String numOfSatTestTakers) {
-        this.numOfSatTestTakers = numOfSatTestTakers;
-    }
-
     public String getSatCriticalReadingAvgScore() {
         return satCriticalReadingAvgScore;
-    }
-
-    public void setSatCriticalReadingAvgScore(String satCriticalReadingAvgScore) {
-        this.satCriticalReadingAvgScore = satCriticalReadingAvgScore;
     }
 
     public String getSatMathAvgScore() {
         return satMathAvgScore;
     }
 
-    public void setSatMathAvgScore(String satMathAvgScore) {
-        this.satMathAvgScore = satMathAvgScore;
-    }
-
     public String getSatWritingAvgScore() {
         return satWritingAvgScore;
     }
 
-    public void setSatWritingAvgScore(String satWritingAvgScore) {
-        this.satWritingAvgScore = satWritingAvgScore;
-    }
 
 }

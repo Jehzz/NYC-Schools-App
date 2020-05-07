@@ -24,7 +24,7 @@ public class SchoolsViewHolder extends RecyclerView.ViewHolder {
         tvSchoolName.setText(school.getSchoolName());
 
         itemView.setOnClickListener(v -> {
-            listener.openDetailedView(school);
+            listener.onClick(school);
             Log.d(TAG, "onClick: " + school.getDbn());
         });
     }

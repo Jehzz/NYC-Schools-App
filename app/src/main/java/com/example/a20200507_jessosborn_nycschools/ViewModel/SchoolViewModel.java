@@ -38,7 +38,9 @@ public class SchoolViewModel extends ViewModel implements Filterable {
                     @Override
                     public void onResponse(Call<List<SchoolSATData>> call, Response<List<SchoolSATData>> response) {
                         Log.d(TAG, "onResponse: ");
-                        listOfSchools.postValue(response.body());
+                        if (response.isSuccessful()) {
+                            listOfSchools.postValue(response.body());
+                        }
                     }
 
                     @Override
