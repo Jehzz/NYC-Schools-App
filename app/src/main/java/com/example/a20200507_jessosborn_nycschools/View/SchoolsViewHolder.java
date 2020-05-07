@@ -1,6 +1,6 @@
 package com.example.a20200507_jessosborn_nycschools.View;
 
-
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +13,7 @@ import com.example.a20200507_jessosborn_nycschools.R;
 public class SchoolsViewHolder extends RecyclerView.ViewHolder {
 
     private TextView tvSchoolName;
+    public String TAG = "SchoolsViewHolder";
 
     public SchoolsViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -22,11 +23,9 @@ public class SchoolsViewHolder extends RecyclerView.ViewHolder {
     public void onBind(final SchoolSATData school, final ShowAllDataInterface listener) {
         tvSchoolName.setText(school.getSchoolName());
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.openDetailedView(school);
-            }
+        itemView.setOnClickListener(v -> {
+            listener.openDetailedView(school);
+            Log.d(TAG, "onClick: " + school.getDbn());
         });
     }
 }
