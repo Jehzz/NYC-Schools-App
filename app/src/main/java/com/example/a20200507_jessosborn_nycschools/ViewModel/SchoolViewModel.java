@@ -23,6 +23,7 @@ public class SchoolViewModel extends ViewModel {
 
     private void loadSchoolsFromAPI() {
         Network network = new Network();
+        network.getRetrofitInstance();
     }
 
 }

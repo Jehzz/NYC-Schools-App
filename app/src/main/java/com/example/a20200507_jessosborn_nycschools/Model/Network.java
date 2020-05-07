@@ -1,6 +1,8 @@
 package com.example.a20200507_jessosborn_nycschools.Model;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Network {
@@ -8,10 +10,15 @@ public class Network {
     private static final String BASE_URL = "https://data.cityofnewyork.us/resource/";
 
     public static Retrofit getRetrofitInstance() {
+
+        OkHttpClient client = new OkHttpClient.Builder().build();
+
         if (retrofit == null) {
-            retrofit = new retrofit2.Retrofit.Builder()
+            retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
+                    .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
         return retrofit;
