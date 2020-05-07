@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a20200507_jessosborn_nycschools.Model.SchoolSATData;
-import com.example.a20200507_jessosborn_nycschools.Model.SchoolsList;
 import com.example.a20200507_jessosborn_nycschools.R;
 
 public class SchoolsViewHolder extends RecyclerView.ViewHolder {
@@ -21,7 +20,7 @@ public class SchoolsViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(final SchoolSATData school, final ShowAllDataInterface listener) {
-        tvSchoolName.setText(school.school_name);
+        tvSchoolName.setText(school.getSchoolName());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

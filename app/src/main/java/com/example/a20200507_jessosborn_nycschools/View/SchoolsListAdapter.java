@@ -6,15 +6,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.a20200507_jessosborn_nycschools.Model.SchoolsList;
+import com.example.a20200507_jessosborn_nycschools.Model.SchoolSATData;
 import com.example.a20200507_jessosborn_nycschools.R;
+
+import java.util.List;
 
 public class SchoolsListAdapter extends RecyclerView.Adapter<SchoolsViewHolder> {
 
-    private SchoolsList dataSet;
+    private List<SchoolSATData> dataSet;
     private ShowAllDataInterface listener;
 
-    public void setDataSet(SchoolsList dataSet) {
+    public void setDataSet(List<SchoolSATData> dataSet) {
         this.dataSet = dataSet;
         notifyDataSetChanged();
     }
@@ -31,11 +33,11 @@ public class SchoolsListAdapter extends RecyclerView.Adapter<SchoolsViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull SchoolsViewHolder holder, int position) {
-        holder.onBind(dataSet.schoolData.get(position), listener);
+        holder.onBind(dataSet.get(position), listener);
     }
 
     @Override
     public int getItemCount() {
-        return dataSet != null ? dataSet.schoolData.size() : 0;
+        return dataSet != null ? dataSet.size() : 0;
     }
 }
