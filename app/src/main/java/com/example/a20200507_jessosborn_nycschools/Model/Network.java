@@ -9,7 +9,7 @@ public class Network {
     private static Retrofit retrofit;
     private static final String BASE_URL = "https://data.cityofnewyork.us/resource/";
 
-    public static Retrofit getRetrofitInstance() {
+    public static RetrofitEndpoint initRetrofit() {
 
         OkHttpClient client = new OkHttpClient.Builder().build();
 
@@ -21,6 +21,6 @@ public class Network {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
-        return retrofit;
+        return retrofit.create(RetrofitEndpoint.class);
     }
 }

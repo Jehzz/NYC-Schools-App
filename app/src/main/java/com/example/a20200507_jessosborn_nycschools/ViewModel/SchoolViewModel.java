@@ -9,8 +9,6 @@ import com.example.a20200507_jessosborn_nycschools.Model.SchoolsList;
 
 public class SchoolViewModel extends ViewModel {
 
-    private String baseUrl = "https://data.cityofnewyork.us/resource/";
-
     private MutableLiveData<SchoolsList> listOfSchools;
 
     public LiveData<SchoolsList> getListOfSchools() {
@@ -23,7 +21,10 @@ public class SchoolViewModel extends ViewModel {
 
     private void loadSchoolsFromAPI() {
         Network network = new Network();
-        network.getRetrofitInstance();
+        network.initRetrofit();
+        //TODO: fetch data from retrofit endpoint methods
+        //network.getSchoolsList(); //currently not visible
+
     }
 
 }
