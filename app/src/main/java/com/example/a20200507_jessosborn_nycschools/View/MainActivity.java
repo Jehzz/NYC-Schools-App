@@ -3,6 +3,7 @@ package com.example.a20200507_jessosborn_nycschools.View;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -44,10 +45,15 @@ public class MainActivity extends AppCompatActivity implements ShowAllDataInterf
         //Get the Viewmodel instance
         model = new ViewModelProvider(this).get(SchoolViewModel.class);
 
-        //Observe Viewmodel, which will trigger the network call
+        //Observe Viewmodel dataset, which will trigger the network call
         model.getListOfSchools().observe(this, listOfSchools -> {
             schoolAdapter.setDataSet(listOfSchools);
             setSearchListener();
+        });
+
+        //Observe ViewModel error message, which will trigger a Toast to notify the user
+        model.getError().observe(this, errorMessage -> {
+            Toast.makeText(this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
         });
     }
 

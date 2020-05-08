@@ -22,6 +22,11 @@ public class SchoolViewModel extends ViewModel implements Filterable {
     private String baseUrl = "https://data.cityofnewyork.us/resource/";
 
     private MutableLiveData<List<SchoolSATData>> listOfSchools;
+    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
+
+    public LiveData<String> getError() {
+        return errorMessage;
+    }
 
     public LiveData<List<SchoolSATData>> getListOfSchools() {
         if (listOfSchools == null) {
@@ -40,12 +45,16 @@ public class SchoolViewModel extends ViewModel implements Filterable {
                         Log.d(TAG, "onResponse: ");
                         if (response.isSuccessful()) {
                             listOfSchools.postValue(response.body());
+                        } else {
+                            Log.d(TAG, "Error Message:  " + response.message());
+                            errorMessage.postValue(response.message());
                         }
                     }
 
                     @Override
                     public void onFailure(Call<List<SchoolSATData>> call, Throwable t) {
-                        Log.d(TAG, "onFailure: ");
+                        Log.d(TAG, "Error Message:  " + t);
+                        errorMessage.postValue(t.toString());
                     }
                 });
     }
