@@ -45,20 +45,18 @@ public class MainActivity extends AppCompatActivity implements ShowAllDataInterf
         //Get the Viewmodel instance
         model = new ViewModelProvider(this).get(SchoolViewModel.class);
 
-        //Observe Viewmodel dataset, which will trigger the network call
+        //Observe Viewmodel dataset, which will trigger the network call and update the UI
         model.getListOfSchools().observe(this, listOfSchools -> {
             schoolAdapter.setDataSet(listOfSchools);
             setSearchListener();
         });
 
         //Observe ViewModel error message, which will trigger a Toast to notify the user
-        model.getError().observe(this, errorMessage -> {
-            Toast.makeText(this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
-        });
+        model.getError().observe(this, errorMessage -> Toast.makeText(this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show());
     }
 
     /**
-     * Under construction
+     * Filtered/Searchable List under construction
      */
     private void setSearchListener() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -69,7 +67,14 @@ public class MainActivity extends AppCompatActivity implements ShowAllDataInterf
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //TODO: apply search term to Filter
+                //TODO: apply search term to the viewmodel's Filter
+                //The Viewmodel, or Repository, will contain two sets of list data; Unfiltered and filtered
+                //The Filter will take the given String and add only the matches to the Filtered list that the UI will observe
+
+                //Alternatively, I could make this listener trigger a second retrofit network call, like so
+                //@GET(.json)
+                //fun getSearchedSchoolList(
+                //@Query where=school_name like SEARCHTERM): Call....
                 return false;
             }
         });

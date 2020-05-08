@@ -2,9 +2,9 @@
     <string name="app_name">20200507-JessOsborn-NYCSchools</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="number_of_testers">\"Number of Testers \n \"</string>
-    <string name="avg_reading_score">Avg Reading Score \n</string>
-    <string name="avg_math_score">Avg Math Score \n</string>
-    <string name="avg_writing_score">Avg Writing Score \n</string>
+    <string name="number_of_testers">\Number of Testers :  \u0020 </string>
+    <string name="avg_reading_score">Avg Reading Score :  \u0020 </string>
+    <string name="avg_math_score">Avg Math Score  \u0020 \u0020 \u0020 : \u0020 </string>
+    <string name="avg_writing_score">Avg Writing Score  \u0020 :  \u0020 </string>
+    <string name="title_string">List of NYC Schools</string>
 </resources>

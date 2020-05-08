@@ -10,7 +10,10 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.a20200507_jessosborn_nycschools.Model.Network;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,9 +21,10 @@ import retrofit2.Response;
 
 public class SchoolViewModel extends ViewModel implements Filterable {
 
-    public String TAG = "SchoolViewModel";
+    private String TAG = "SchoolViewModel";
     private String baseUrl = "https://data.cityofnewyork.us/resource/";
 
+    //TODO: Move responsibility for fetching and storing school's data to a proper Repository class
     private MutableLiveData<List<SchoolSATData>> listOfSchools;
     private MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
@@ -30,18 +34,18 @@ public class SchoolViewModel extends ViewModel implements Filterable {
 
     public LiveData<List<SchoolSATData>> getListOfSchools() {
         if (listOfSchools == null) {
-            listOfSchools = new MutableLiveData<List<SchoolSATData>>();
-            loadSchoolsFromAPI();
+            listOfSchools = new MutableLiveData<>();//School's SAT data will not change during a user's session
+            loadSchoolsFromAPI();                   // so it only needs to be loaded once
         }
         return listOfSchools;
     }
 
     private void loadSchoolsFromAPI() {
         Network network = new Network(baseUrl);
-        network.initRetrofit().getSchoolsList()
+        Objects.requireNonNull(network.initRetrofit().getSchoolsList())
                 .enqueue(new Callback<List<SchoolSATData>>() {
                     @Override
-                    public void onResponse(Call<List<SchoolSATData>> call, Response<List<SchoolSATData>> response) {
+                    public void onResponse(@NotNull Call<List<SchoolSATData>> call, @NotNull Response<List<SchoolSATData>> response) {
                         Log.d(TAG, "onResponse: ");
                         if (response.isSuccessful()) {
                             listOfSchools.postValue(response.body());
@@ -52,7 +56,7 @@ public class SchoolViewModel extends ViewModel implements Filterable {
                     }
 
                     @Override
-                    public void onFailure(Call<List<SchoolSATData>> call, Throwable t) {
+                    public void onFailure(@NotNull Call<List<SchoolSATData>> call, @NotNull Throwable t) {
                         Log.d(TAG, "Error Message:  " + t);
                         errorMessage.postValue(t.toString());
                     }
@@ -61,8 +65,8 @@ public class SchoolViewModel extends ViewModel implements Filterable {
 
     @Override
     public Filter getFilter() {
-        //TODO: Implement Filter object, performFiltering(), and publishResults()
-        //I can do this in Kotlin, unsure of how to 'return object : Filter(){... in Java
+        //TODO: Implement Filter object, and its performFiltering(), and publishResults() methods
+        //I can do this in Kotlin, unsure of how to implement the 'return object : Filter(){... in Java
         return null;
     }
 }
